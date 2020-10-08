@@ -45,7 +45,7 @@ export class RecipeResolver {
             return await Recipe.find({relations:{category:true, user: true}});
         } catch (e) {
             console.log(e);
-            throw e;
+            return  e;
         }
     }
 
@@ -61,12 +61,12 @@ export class RecipeResolver {
 
             console.log(recipe);
 
-            if(!recipe) throw new Error(`There is not a recipe with the id:${id}`)
+            if(!recipe) return  new Error(`There is not a recipe with the id:${id}`)
 
             return recipe;
         } catch (e) {
             console.log(e);
-            throw e;
+            return  e;
         }
     }
 
@@ -82,7 +82,7 @@ export class RecipeResolver {
                                .innerJoinAndSelect("recipe.category", "category", "category.id = recipe.categoryId")
                                .getMany();;
         } catch (e) {
-            throw e;
+            return  e;
         }
     }
     
@@ -98,7 +98,7 @@ export class RecipeResolver {
 
             const category = await Category.findOne({where:{id:categoryId}});
 
-            if(!category) throw new Error('Category not found. Use "getCategories" for find some category or create a category using the mutation "createCategory".');
+            if(!category) return  new Error('Category not found. Use "getCategories" for find some category or create a category using the mutation "createCategory".');
 
             const user = await User.findOne({where:{id:ctx.id}});
 
@@ -110,7 +110,7 @@ export class RecipeResolver {
             return await Recipe.findOne({where:{id:newRecipe.identifiers[0].id}, relations:{category: true, user:true}});
         } catch (e) {
             console.log(e);
-            throw e;
+            return  e;
         }
     }
 
@@ -124,11 +124,11 @@ export class RecipeResolver {
 
             const category = await Category.findOne({where:{id:recipe.categoryId}});
 
-            if(!category) throw new Error(`Category for the id ${recipe.categoryId} not found.`);
+            if(!category) return  new Error(`Category for the id ${recipe.categoryId} not found.`);
             
             const findedRecipe = await Recipe.findOne({where:{id:recipe.id}, relations:{category:true, user:true}});
 
-            if(!findedRecipe) throw new Error(`Recipe for the id ${recipe.id} not found.`);
+            if(!findedRecipe) return  new Error(`Recipe for the id ${recipe.id} not found.`);
 
             Object.assign(findedRecipe, recipe);
 
@@ -138,7 +138,7 @@ export class RecipeResolver {
             
         } catch (e) {
             console.log(e);
-            throw e;
+            return  e;
         }
     }
 
@@ -152,12 +152,12 @@ export class RecipeResolver {
 
             const recipe = await Recipe.findOne({where:{id},relations:{category:true, user:true}});
 
-            if(!recipe) throw new Error(`Recipe for the id ${id} not found`);
+            if(!recipe) return  new Error(`Recipe for the id ${id} not found`);
 
             return await (await recipe.remove()).name;
         } catch (e) {
             console.log(e);
-            throw e;
+            return  e;
         }
     }
     

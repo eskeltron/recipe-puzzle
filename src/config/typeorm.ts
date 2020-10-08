@@ -3,13 +3,15 @@ import path from "path";
 
 export async function connect(){
     try {
+        const env = process.env['NODE_ENV'];
+        console.log(env);
         await createConnection({
             type: 'mysql',
-            host: 'localhost',
+            host: env == 'production' ? 'sql9.freemysqlhosting.net' : 'localhost',
             port: 3306,
-            username: 'root',
-            password: '1234',
-            database: 'Ejercicio',
+            username: env == 'production' ? 'sql9369465' : 'root',
+            password: env == 'production' ? 'XiRk9TwdDs' : '1234',
+            database: env == 'production' ? 'sql9369465' : 'Ejercicio',
             entities: [
                 path.join(__dirname, '../entity/**/**.ts')
             ],

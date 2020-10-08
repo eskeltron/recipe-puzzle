@@ -49,11 +49,11 @@ export class UserResolver {
 
             const user = await User.findOne({where:{email}, select:{password: true, id: true, email:true}});
 
-            if(!user) throw new Error('The email was not found.');
+            if(!user) return  new Error('The email was not found.');
 
             const matched = await bcrypt.compare(password, user.password);
 
-            if(!matched) throw new Error('Password not matched.');
+            if(!matched) return  new Error('Password not matched.');
 
             const token = jwt.sign({email, id:user.id}, SECRET_KEY, {
                 expiresIn: 5400 //1:30hs
@@ -72,7 +72,7 @@ export class UserResolver {
         try{
             const userExists = await User.findOne({where: {email:user.email}});
             
-            if(userExists) throw new Error('This email already exists.');
+            if(userExists) return  new Error('This email already exists.');
     
             user.password = await bcrypt.hash(user.password, 10);
 

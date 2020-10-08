@@ -20,7 +20,7 @@ export class CategoryResolver {
             return await Category.find();
         } catch (e) {
             console.log(e);
-            throw e;
+            return e;
         }
     }
 
@@ -34,7 +34,7 @@ export class CategoryResolver {
             return await Category.findOne({where:{id}});
         } catch (e) {
             console.log(e);
-            throw e;
+            return e;
         }
     }
 
@@ -49,7 +49,7 @@ export class CategoryResolver {
             return category.save();
         } catch (e) {
             console.log(e);
-            throw e;
+            return e;
         }
     }
 
@@ -64,13 +64,13 @@ export class CategoryResolver {
 
             let category = await Category.findOne({where:{id}});
 
-            if(!category) throw new Error(`Category for id ${id} not found.`);
+            if(!category) return new Error(`Category for id ${id} not found.`);
 
             Object.assign(category, attributes);
-            
+
             return category.save();
         } catch (e) {
-            throw e;
+            return e;
         }
     }
 
@@ -82,10 +82,10 @@ export class CategoryResolver {
         try {
             await validateUser(ctx.email, ctx.id);
             let category = await Category.findOne({where:{id}});
-            if(!category) throw new Error(`Category for id ${id} not found.`);
+            if(!category) return new Error(`Category for id ${id} not found.`);
             return (await category.remove()).name;
         } catch (e) {
-            throw e;
+            return e;
         }
     }
 
