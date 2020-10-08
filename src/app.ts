@@ -34,7 +34,7 @@ export async function startServer(){
         ]
     })
 
-    const server = new ApolloServer({schema, context});
+    const server = new ApolloServer({schema, context, introspection: true, playground:true});
 
     server.applyMiddleware({app, path: '/graphql'});
 
