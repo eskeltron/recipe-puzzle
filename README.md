@@ -8,7 +8,7 @@
 
 ### 1.  Run `npm install`
 
-### 2.  Open [`localhost`](localhost:3000/graphql)
+### 2.  Open [localhost](localhost:3000/graphql)
 
 ### 3. Test!
 
