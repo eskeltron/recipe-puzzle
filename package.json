@@ -26,7 +26,8 @@
     "typescript": "^4.0.3"
   },
   "scripts": {
-    "dev": "nodemon src/index.ts --exec ts-node"
+    "dev": "nodemon src/index.ts --exec ts-node",
+    "start": "node src/index.ts --exec ts-node"
   },
   "keywords": [],
   "author": "",
