@@ -1,4 +1,4 @@
-# recipe-puzzle
+# Recipes
 
 **Prerequisites**
 
