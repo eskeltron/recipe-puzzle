@@ -9,9 +9,11 @@
 
 ### 1.  Run `npm install`
 
-### 2.  Open localhost:3000/graphql
+### 2.  Run `npm run dev` or `npm run start`
 
-### 3. Test!
+### 3.  Open localhost:3000/graphql
+
+### 4. Test!
 
 # [Demo in Heroku](https://recipe-puzzle.herokuapp.com/graphql)
 
