@@ -12,5 +12,5 @@
 
 ### 3. Test!
 
-#### [Demo in Heroku](https://recipe-puzzle.herokuapp.com/)
+#### [Demo in Heroku](https://recipe-puzzle.herokuapp.com/graphql)
 
