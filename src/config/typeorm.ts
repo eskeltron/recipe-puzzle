@@ -5,6 +5,8 @@ export async function connect(){
     try {
         const env = process.env['NODE_ENV'];
         console.log(env);
+        
+        //The remote database is hosted by a free hosting. These configurations are only for testing the app. 
         await createConnection({
             type: 'mysql',
             host: env == 'production' ? 'sql9.freemysqlhosting.net' : 'localhost',
