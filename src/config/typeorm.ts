@@ -5,14 +5,14 @@ export async function connect(){
     try {
         const env = process.env['NODE_ENV'];
         const isProd = env === 'production';
-        //The remote database is hosted by a free hosting. These configurations are only for testing the app. 
+
         await createConnection({
             type: 'mysql',
-            host: isProd ? 'sql9.freemysqlhosting.net' : 'localhost',
+            host: isProd ? 'sql10.freemysqlhosting.net' : 'localhost',
             port: 3306,
-            username: isProd ? 'sql9369465' : 'root',
-            password: isProd ? 'XiRk9TwdDs' : '1234',
-            database: isProd ? 'sql9369465' : 'Ejercicio',
+            username: isProd ? 'sql10371019' : 'root',
+            password: isProd ? 'VTSxnrY3af' : '1234',
+            database: isProd ? 'sql10371019' : 'Ejercicio',
             entities: [
                 path.join(__dirname, '../entity/**/**.ts')
             ],
