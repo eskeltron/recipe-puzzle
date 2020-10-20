@@ -24,7 +24,7 @@ export class User extends BaseEntity{
     @Column()
     password!:string
 
-    @ManyToMany(() => Recipe, recipe => recipe.user)
+    @OneToMany(() => Recipe, recipe => recipe.user)
     // @Field(() => [Recipe])
     recipes?:Recipe[];
 
